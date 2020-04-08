@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { TimelineLite, Power3 } from 'gsap';
+import { TimelineMax } from 'gsap';
 import { Container } from 'react-bootstrap';
 
 import cubes from '~/assets/img/carousel/left_cubes.svg';
@@ -20,35 +20,38 @@ export default function First() {
   let cubeOrangeImg = useRef(null);
   let cubesImg = useRef(null);
 
-  const tl = new TimelineLite();
+  const tl = new TimelineMax();
 
   useEffect(() => {
-    tl.from(title, 1, { y: '-100', opacity: 0, ease: Power3.easeOut })
-      .from(frase, 1, { y: '100', opacity: 0, ease: Power3.easeOut }, 0.4)
-      .from(button, 0.7, { x: '-100', opacity: 0, ease: Power3.easeOut }, 0.6)
-      .from(
-        cubeBlueImg,
-        0.7,
-        { x: '-50', opacity: 0, ease: Power3.easeOut },
-        0.6
-      )
-      .from(
-        cubeOrangeImg,
-        0.7,
-        { x: '-50', opacity: 0, ease: Power3.easeOut },
-        0.6
-      )
-      .from(cubesImg, 1.2, { x: '400', opacity: 0, ease: Power3.easeOut }, 0.6);
+    tl.to([title, frase], 1.5, { opacity: 1, top: '0' })
+      .to(button, 0.7, { opacity: 1 }, 1)
+      .to(cubeBlueImg, 0.7, { opacity: 1 }, 1.3)
+      .to(cubeOrangeImg, 0.7, { opacity: 1 }, 1.3)
+      .to(cubesImg, 1.2, { opacity: 1 }, 1.3);
   }, [tl]);
 
   return (
     <Wrapper>
       <Container>
-        <h1 ref={el => (title = el)}>O Único delivery focado em gelo</h1>
+        <h1
+          ref={el => (title = el)}
+          style={{ opacity: 0, position: 'relative', bottom: '2em' }}
+        >
+          O Único delivery focado em gelo
+        </h1>
 
-        <Frase ref={el => (frase = el)}>vê se não esquenta!</Frase>
+        <Frase
+          ref={el => (frase = el)}
+          style={{ opacity: 0, position: 'relative', bottom: '2em' }}
+        >
+          vê se não esquenta!
+        </Frase>
 
-        <Button ref={el => (button = el)} href="/entrega-programada">
+        <Button
+          ref={el => (button = el)}
+          style={{ opacity: 0 }}
+          href="/entrega-programada"
+        >
           programe sua entrega
         </Button>
       </Container>
@@ -56,18 +59,21 @@ export default function First() {
       <Background>
         <img
           ref={el => (cubeBlueImg = el)}
+          style={{ opacity: 0 }}
           src={cubeBlue}
           alt="Cube"
           className="cube blue"
         />
         <img
           ref={el => (cubeOrangeImg = el)}
+          style={{ opacity: 0 }}
           src={cubeOrange}
           alt="Cube"
           className="cube orange"
         />
         <img
           ref={el => (cubesImg = el)}
+          style={{ opacity: 0 }}
           src={cubes}
           alt="Cube"
           className="cube cubes"
