@@ -20,7 +20,7 @@ Projeto foi realizado para o [Estúdio La. Bomba](https://www.estudiolabomba.com
 
 ### Mobile
 
-<p align="center"><img src="./images/mobile.gif"></p>
+<p align="center"><img width="400" src="./images/mobile.gif"></p>
 
 ---
 
